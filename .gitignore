@@ -1,0 +1,4 @@
+#git ignore these directories from root folder
+/node_modules
+/dist
+/compiled
