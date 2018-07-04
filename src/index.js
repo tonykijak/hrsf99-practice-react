@@ -11,6 +11,6 @@ var movies = [
 ];
 
 ReactDOM.render(
-  <App movies={movies}/>,
+  <App movies={movies} />,
   document.getElementById("root")
 );

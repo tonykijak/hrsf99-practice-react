@@ -7,14 +7,19 @@ class App extends React.Component {
   constructor(props) {
   	super(props);
   	this.state = {
-  	  movies: []
+  	  movies: this.props.movies,
+      searchTerm: '',
+
   	}
   }
 
-  search() {
-  	this.props.movies.reduce((acc, value) => {
-  	  return acc;
-  	}, false);
+  search(searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+    let regex = new RegExp(searchTerm);
+  	return this.props.movies.reduce((acc, value, index) => {
+  	  if (value.title.toLowerCase().match(regex) !== null) acc.push(index);
+      return acc; 
+  	}, []);
   }
 
   render(){
@@ -23,8 +28,8 @@ class App extends React.Component {
         <div className="title-bar">
           <h3>Movie List</h3>
         </div>
-        <SearchBar />
-        <MovieList movies={this.props.movies} />
+        <SearchBar search={this.search.bind(this)} searchTerm={this.state.searchTerm} />
+        <MovieList movies={this.state.movies} />
       </div>
     );
   }

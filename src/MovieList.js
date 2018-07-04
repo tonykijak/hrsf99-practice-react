@@ -4,7 +4,7 @@ import MovieListEntry from "./MovieListEntry.js";
 var MovieList = (props) => (
   <div className="movie-list">
     {props.movies.map((movie, index) => 
-      <MovieListEntry movie={movie}/>
+      <MovieListEntry movie={movie} />
     )}
   </div>
 );
